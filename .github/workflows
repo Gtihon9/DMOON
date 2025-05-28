@@ -1,0 +1,14 @@
+name: Solidity CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install Solidity
+        run: sudo add-apt-repository ppa:ethereum/ethereum
+      - name: Compile Smart Contract
+        run: solc --bin contracts/DmoonToken.sol
